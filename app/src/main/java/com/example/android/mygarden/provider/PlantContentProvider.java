@@ -43,8 +43,6 @@ public class PlantContentProvider extends ContentProvider {
     // Declare a static variable for the Uri matcher that you construct
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private static final String TAG = PlantContentProvider.class.getName();
-    // Member variable for a PlantDbHelper that's initialized in the onCreate() method
-    private PlantDbHelper mPlantDbHelper;
 
     // Define a static buildUriMatcher method that associates URI's with their int match
     public static UriMatcher buildUriMatcher() {
@@ -55,6 +53,9 @@ public class PlantContentProvider extends ContentProvider {
         uriMatcher.addURI(PlantContract.AUTHORITY, PlantContract.PATH_PLANTS + "/#", PLANT_WITH_ID);
         return uriMatcher;
     }
+
+    // Member variable for a PlantDbHelper that's initialized in the onCreate() method
+    private PlantDbHelper mPlantDbHelper;
 
     @Override
     public boolean onCreate() {
