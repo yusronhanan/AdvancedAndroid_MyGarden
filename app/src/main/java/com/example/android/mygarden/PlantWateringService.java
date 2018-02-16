@@ -1,9 +1,5 @@
 package com.example.android.mygarden;
 
-/**
- * Created by kambi on 17/02/2018.
- */
-
 import android.app.IntentService;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
@@ -22,9 +18,6 @@ import static com.example.android.mygarden.provider.PlantContract.BASE_CONTENT_U
 import static com.example.android.mygarden.provider.PlantContract.INVALID_PLANT_ID;
 import static com.example.android.mygarden.provider.PlantContract.PATH_PLANTS;
 
-/**
- * Created by wahaz on 08/11/2017.
- */
 public class PlantWateringService extends IntentService {
 
     public static final String ACTION_WATER_PLANT = "com.example.android.mygarden.action.water_plant";
@@ -110,6 +103,7 @@ public class PlantWateringService extends IntentService {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, PlantWidgetProvider.class));
 
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_grid_view);
         PlantWidgetProvider.updatePlantWidgets(this, appWidgetManager, imgRes, plantId, canWater, appWidgetIds);
     }
 }
